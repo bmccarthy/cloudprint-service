@@ -27,7 +27,7 @@ setup(
     packages=find_packages(exclude=['ez_setup']),
     entry_points = {
         'console_scripts': [
-            'cloudprint = cloudprint.cloudprint:main',
+            'cloudprint-cmd = cloudprint.cloudprint:main',
         ],
     },
 )
