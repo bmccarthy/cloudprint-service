@@ -484,6 +484,10 @@ def main():
 
     if daemon:
         try:
+            # workaround to avoid overloaded module
+            prepath = '/usr/lib/pymodules/python%s.%s' % sys.version_info[0:2]
+            sys.path.insert(0, prepath)
+
             from daemon import runner
         except ImportError:
             print 'daemon module required for -d'
