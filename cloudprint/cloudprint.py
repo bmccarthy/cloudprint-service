@@ -386,11 +386,11 @@ def process_job(cups_connection, cpp, printer, job):
         if 'request' in options: del options['request']
         options = dict( (str(k), str(v)) for k, v in options.items() )
 
-        cpp.finish_job(job['id'])
-
         cups_connection.printFile(printer.name, tmp.name, job['title'], options)
         os.unlink(tmp.name)
         LOGGER.info('SUCCESS ' + job['title'].encode('unicode-escape'))
+
+        cpp.finish_job(job['id'])
 
     except:
         cpp.fail_job(job['id'])
